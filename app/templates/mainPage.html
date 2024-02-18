@@ -6,16 +6,19 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel = "icon" type="image/png" href="{{url_for('static',path='images/favicon.png')}}">
+    <link rel ="stylesheet" href="{{ url_for('static', path='/css/navigate.css') }}">
     <title>Main</title>
 </head>
 <body>
+    <div class="navbar">
+      <a href="http://localhost:8000/pages/main" class="active">Home</a>
+      <a href="http://localhost:8000/pages/login">Login</a>
+      <a href="http://localhost:8000/pages/register">Register</a>
+    </div>
     <h1>This is our main page</h1>
     <img src="{{url_for('static',path='images/hello.jpg')}}"
          width="200"
          height="200">
     <p>Hello, everybody</p>
-    <a href="http://localhost:8000/pages/login">
-        Login
-    </a>
 </body>
 </html>
