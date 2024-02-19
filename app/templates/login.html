@@ -5,34 +5,45 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel ="stylesheet" href="{{ url_for('static', path='/css/navigate.css') }}">
-    <link rel ="stylesheet" href="{{ url_for('static', path='/css/register.css') }}">
+    <link rel ="stylesheet" href="{{ url_for('static', path='/css/header_block.css') }}">
+    <link rel ="stylesheet" href="{{ url_for('static', path='/css/login.css') }}">
     <title>Login</title>
 </head>
 <body>
-    <form action="action_page.php">
-    <div class="navbar">
-      <a href="http://localhost:8000/pages/main" class="active">Home</a>
-      <a href="http://localhost:8000/pages/login">Login</a>
-      <a href="http://localhost:8000/pages/register">Register</a>
-    </div>
+
+    <header>
+        <nav class="menu">
+          <ul>
+            <li><a href="http://localhost:8000/pages/main">Home</a></li>
+            <li><a>Page 2</a></li>
+            <li><a>Page 3</a></li>
+          </ul>
+        </nav>
+        <div class="account">
+          <ul>
+            <li><a href="http://localhost:8000/pages/login" class="active">Login</a></li>
+            <li><a href="http://localhost:8000/pages/register">Register</a></li>
+          </ul>
+        </div>
+    </header>
+
     <div class="container">
-        <h1>Login</h1>
-        <p>Fill in this form to log in.</p>
-        <hr>
-
-        <label for="email"><b>Email</b></label>
-        <input id="email" type="text" placeholder="Enter Email" name="email" required>
-
-        <label for="psw"><b>Password</b></label>
-        <input id="psw" type="password" placeholder="Enter Password" name="psw" required>
-
-        <button type="submit" class="registerbtn">Log in</button>
+        <div class="wrapper">
+          <div class="title"><span>Login Form</span></div>
+          <form action="#">
+            <div class="row">
+              <input id="email" type="email" placeholder="Enter Email" name="email" required>
+            </div>
+            <div class="row">
+              <input id="psw" type="password" placeholder="Enter Password" name="psw" required>
+            </div>
+            <div class="row button">
+              <input type="submit" value="Login">
+            </div>
+            <div class="signup-link">Don't have an account? <a href="http://localhost:8000/pages/register">Register</a></div>
+          </form>
+        </div>
     </div>
-
-    <div class="container signin">
-    <p>Don't have an account? <a href="http://localhost:8000/pages/register">Register</a>.</p>
-    </div>
-</form>
+    
 </body>
 </html>
