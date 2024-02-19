@@ -15,7 +15,7 @@ header ul{
     margin-block-end: 0px;
 }
 header li{
-    display: inline-flex
+    display: inline
 }
 header a {
     float: left;
