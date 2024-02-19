@@ -17,7 +17,13 @@
 }
 
 .card__text{
+    block-size: 270px;
+    overflow: auto;
     margin: 15px;
+}
+
+.card h4{
+    margin-block-start: 0em;
 }
 
 .sidenav {
