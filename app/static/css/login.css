@@ -29,7 +29,8 @@
     position: relative;
   }
   .wrapper form .row input{
-    padding-left:15px;
+    box-sizing: border-box;
+    padding-left: 15px;
     height: 100%;
     width: 100%;
     outline: none;
