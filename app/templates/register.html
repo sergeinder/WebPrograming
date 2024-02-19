@@ -23,17 +23,17 @@
   </header>
 
     <div class="container">
-        <div class="wrapper">
+        <div class="wrapper" id = "wrapper">
           <div class="title"><span>Register Form</span></div>
-          <form action="#">
+          <form class='formWithValidation' action="#">
             <div class="row">
-              <input id="email" type="email" placeholder="Enter Email" name="email" required>
+              <input id="email" type = "text" placeholder="Enter Email" name="email">
             </div>
             <div class="row">
-              <input id="psw" type="password" placeholder="Enter Password" name="psw" required>
+              <input id="psw" type = "text" placeholder="Enter Password" name="psw">
             </div>
             <div class="row">
-                <input id="psw-repeat" type="password" placeholder="Repeat Password" name="psw-repeat" required>
+                <input id="psw-repeat" type = "text" placeholder="Repeat Password" name="psw-repeat">
               </div>
             <div class="row button">
               <input type="submit" value="Register">
@@ -42,5 +42,60 @@
           </form>
         </div>
     </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const wrapper = document.getElementById('wrapper');
+
+    wrapper.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('psw').value;
+        const passwordRepeat = document.getElementById('psw-repeat').value;
+
+        // Здесь должна быть логика отправки данных на сервер для авторизации
+        console.log(`Email: ${email}, Password: ${password}`);
+    });
+});
+
+
+function openNewPage() {
+  window.open("https://vk.com", "_blank");
+}
+
+document.getElementById('wrapper').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    var email = document.getElementById('email').value;
+    var password = document.getElementById('psw').value;
+    var passwordRepeat = document.getElementById('psw-repeat').value;
+
+    if (email === '') {
+        alert('Email не может быть пустым');
+    } else if (!validateEmail(email)) {
+        alert('Некорректный email');
+    }
+
+    if (password === '') {
+        alert('Пароль не может быть пустым');
+    } else if (!validatePassword(password)) {
+        alert('Пароль должен содержать не менее 8 символов, буквы и цифры');
+    }
+
+    if (passwordRepeat !== password) {
+        alert('Пароль должен повторяться');
+    }
+
+    });
+
+    function validateEmail(email) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+    }
+
+    function validatePassword(password) {
+        var passwordRegex = /^(?=.*\d)(?=.*[a-zA-Z]).{8,}$/;
+        return passwordRegex.test(password);
+    }
+</script>
 </body>
 </html>
