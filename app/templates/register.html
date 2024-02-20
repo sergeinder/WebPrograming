@@ -28,12 +28,15 @@
           <form class='formWithValidation' action="#">
             <div class="row">
               <input id="email" type = "text" placeholder="Enter Email" name="email">
+              <span id ="emailError" class="error"></span>
             </div>
             <div class="row">
               <input id="psw" type = "text" placeholder="Enter Password" name="psw">
+              <span id ="pswError" class="error"></span>
             </div>
             <div class="row">
                 <input id="psw-repeat" type = "text" placeholder="Repeat Password" name="psw-repeat">
+                <span id ="psw-repeatError" class="error"></span>
               </div>
             <div class="row button">
               <input type="submit" value="Register">
@@ -54,6 +57,8 @@
 
         // Здесь должна быть логика отправки данных на сервер для авторизации
         console.log(`Email: ${email}, Password: ${password}`);
+
+        wrapper.reset();
     });
 });
 
@@ -61,24 +66,30 @@
 document.getElementById('wrapper').addEventListener('submit', function(event) {
     event.preventDefault();
 
+    var emailError = document.getElementById('emailError');
+    var passwordError = document.getElementById('pswError');
+    var passwordRepeatError = document.getElementById('psw-repeatError');
+
     var email = document.getElementById('email').value;
     var password = document.getElementById('psw').value;
     var passwordRepeat = document.getElementById('psw-repeat').value;
 
     if (email === '') {
-        alert('Email не может быть пустым');
+      emailError.textContent = 'Email пользователя не может быть пустым';
     } else if (!validateEmail(email)) {
-        alert('Некорректный email');
+      emailError.textContent = 'Некорректный email';
     }
 
     if (password === '') {
-        alert('Пароль не может быть пустым');
+      passwordError.textContent = 'Пароль не может быть пустым';
     } else if (!validatePassword(password)) {
-        alert('Пароль должен содержать не менее 8 символов, буквы и цифры');
+      passwordError = 'Пароль должен содержать не менее 8 символов, буквы и цифры';
     }
 
-    if (passwordRepeat !== password) {
-        alert('Пароль должен повторяться');
+    if (passwordRepeat === "") {
+      passwordRepeatError.textContent = 'Пароль не может быть пустым';
+    }else if(password !== passwordRepeat){
+      passwordRepeatError.textContent = 'Пароль должен повторяться';
     }
 
     });
