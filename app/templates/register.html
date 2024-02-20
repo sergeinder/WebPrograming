@@ -23,19 +23,19 @@
   </header>
 
     <div class="container">
-        <div class="wrapper" id = "wrapper">
+        <div class="wrapper">
           <div class="title"><span>Register Form</span></div>
-          <form class='formWithValidation' action="#">
+          <form class='formWithValidation' action="#" id = "wrapper">
             <div class="row">
-              <input id="email" type = "text" placeholder="Enter Email" name="email">
+              <input id="email" placeholder="Enter Email" name="email">
               <span id ="emailError" class="error"></span>
             </div>
             <div class="row">
-              <input id="psw" type = "text" placeholder="Enter Password" name="psw">
+              <input id="psw" type = "password" placeholder="Enter Password" name="psw">
               <span id ="pswError" class="error"></span>
             </div>
             <div class="row">
-                <input id="psw-repeat" type = "text" placeholder="Repeat Password" name="psw-repeat">
+                <input id="psw-repeat" type = "password" placeholder="Repeat Password" name="psw-repeat">
                 <span id ="psw-repeatError" class="error"></span>
               </div>
             <div class="row button">
@@ -63,35 +63,50 @@
 
 document.getElementById('wrapper').addEventListener('submit', function(event) {
     event.preventDefault();
+    const wrapper = document.getElementById('wrapper');
 
     var emailError = document.getElementById('emailError');
     var passwordError = document.getElementById('pswError');
     var passwordRepeatError = document.getElementById('psw-repeatError');
 
+    var flag = true;
     var email = document.getElementById('email').value;
     var password = document.getElementById('psw').value;
     var passwordRepeat = document.getElementById('psw-repeat').value;
-
+    
+  
     if (email === '') {
+      flag = false;
       emailError.textContent = 'Email пользователя не может быть пустым';
     } else if (!validateEmail(email)) {
       emailError.textContent = 'Некорректный email';
-    }
-
+      flag = false;
+    } else emailError.textContent = '';
+  
     if (password === '') {
       passwordError.textContent = 'Пароль не может быть пустым';
+      flag = false;
     } else if (!validatePassword(password)) {
-      passwordError = 'Пароль должен содержать не менее 8 символов, буквы и цифры';
-    }
+      passwordError.textContent = 'Пароль должен содержать не менее 8 символов, буквы и цифры';
+      flag = false;
+    } else passwordError.textContent = '';
 
     if (passwordRepeat === "") {
       passwordRepeatError.textContent = 'Пароль не может быть пустым';
+      flag = false;
     }else if(password !== passwordRepeat){
       passwordRepeatError.textContent = 'Пароль должен повторяться';
+      flag = false;
+    }else{
+      passwordRepeatError.textContent = '';
     }
-
+      
+    if(flag === true){
+      wrapper.reset();
+    }
     });
 
+    
     function validateEmail(email) {
         var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(String(email).toLowerCase());

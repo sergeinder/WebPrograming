@@ -26,12 +26,14 @@
     <div class="container">
         <div class="wrapper">
           <div class="title"><span>Login Form</span></div>
-          <form action="#">
+          <form id ="wrapper" action="#">
             <div class="row">
-              <input id="email" type="email" placeholder="Enter Email" name="email" required>
+              <input id="email" placeholder="Enter Email" name="email">
+              <span class="error" id ="emailError"></span>
             </div>
             <div class="row">
-              <input id="psw" type="password" placeholder="Enter Password" name="psw" required>
+              <input id="psw" type="password" placeholder="Enter Password" name="psw">
+              <span class="error" id ="pswError"></span>
             </div>
             <div class="row button">
               <input type="submit" value="Login">
@@ -40,6 +42,62 @@
           </form>
         </div>
     </div>
-    
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+      const wrapper = document.getElementById('wrapper');
+  
+      wrapper.addEventListener('submit', function(event) {
+          event.preventDefault();
+          const email = document.getElementById('email').value;
+          const password = document.getElementById('psw').value;
+  
+          // Здесь должна быть логика отправки данных на сервер для авторизации
+          console.log(`Email: ${email}, Password: ${password}`);
+      });
+  });
+  
+  
+  document.getElementById('wrapper').addEventListener('submit', function(event) {
+      const wrapper = document.getElementById('wrapper');
+      event.preventDefault();
+  
+      var emailError = document.getElementById('emailError');
+      var passwordError = document.getElementById('pswError');
+
+      var flag = true;
+      var email = document.getElementById('email').value;
+      var password = document.getElementById('psw').value;
+  
+      if (email === '') {
+        flag = false;
+        emailError.textContent = 'Email пользователя не может быть пустым';
+      } else if (!validateEmail(email)) {
+        emailError.textContent = 'Некорректный email';
+        flag = false;
+      } else emailError.textContent = '';
+  
+      if (password === '') {
+        passwordError.textContent = 'Пароль не может быть пустым';
+        flag = false;
+      } else if (!validatePassword(password)) {
+        passwordError.textContent = 'Пароль должен содержать не менее 8 символов, буквы и цифры';
+        flag = false;
+      } else passwordError.textContent = '';
+      
+      if(flag === true){
+        wrapper.reset();
+      }
+      });
+  
+      function validateEmail(email) {
+          var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+          return re.test(String(email).toLowerCase());
+      }
+  
+      function validatePassword(password) {
+          var passwordRegex = /^(?=.*\d)(?=.*[a-zA-Z]).{8,}$/;
+          return passwordRegex.test(password);
+      }
+  </script>
 </body>
 </html>
