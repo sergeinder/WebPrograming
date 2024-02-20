@@ -17,28 +17,28 @@
   <header>
     <div class="menu">
       <a href="http://localhost:8000/pages/main" class="active">Home</a>
-      <a>Page 2</a>
-      <a>Page 3</a>
+      <a>Hotels</a>
+      <a>Events</a>
     </div>
     <div class="account">
       <a href="http://localhost:8000/pages/login">Login</a>
       <a href="http://localhost:8000/pages/register">Register</a>
     </div>
-</header>
+  </header>
 
 
   <main>
     <div class="sidenav">
-      <a href="#City1">City 1</a>
+      <a href="#City1">Moscow</a>
       <a href="#City2">City 2</a>
       <a href="#City3">City 3</a>
       <a href="#City4">City 4</a>
       <a href="#City5">City 5</a>
     </div>
     <div class="card">
-      <img src="https://lorempic.com/640/480" width="400" height="300" alt="city">
+      <img src="{{url_for('static',path='images/moscow.jpg')}}" width="400" height="300" alt="city">
       <div class="card__text">
-        <h4 id="City1">City 1</h4>
+        <a href="http://localhost:8000/pages/city1" style="color: white"><h4 id="City1">Moscow</h4></a>
         <p>description of the city <br/> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, consequatur illo. Aperiam, placeat. Minus suscipit iure natus officia repellat temporibus, reprehenderit quisquam repudiandae itaque aspernatur cupiditate vel quasi eaque ratione facilis expedita reiciendis, voluptatum ipsa hic voluptate? Mollitia placeat omnis numquam, beatae cum eligendi nihil hic tenetur natus repudiandae eos?</p>
       </div>
     </div>

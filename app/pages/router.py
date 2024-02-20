@@ -29,3 +29,11 @@ async def get_login_page(
         request: Request
 ):
     return templates.TemplateResponse("login.html", context={"request": request})
+
+
+@router.get("/city1")
+async def get_city1_page(
+        request: Request
+):
+    return templates.TemplateResponse("city1.html", context={"request": request})
+
