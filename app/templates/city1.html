@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <script src="https://api-maps.yandex.ru/2.0-stable/?apikey=9a9e76e0-a2b2-4150-a38d-30b776ddd95e&load=package.standard&lang=ru-RU" type="text/javascript"></script>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -21,6 +22,24 @@
       <a href="http://localhost:8000/pages/register">Register</a>
     </div>
     </header>
+    <div id="map" style="width: 600px; height: 400px"></div>
+    <script type="text/javascript">
+            var map = new ymaps.Map ("map", {
+                    center: [55.76, 37.64],
+                    zoom: 7
+                });
+    </script>
+    <script type="text/javascript">
+    ymaps.ready(init);
+    var myMap;
+
+    function init(){
+        myMap = new ymaps.Map ("map", {
+            center: [55.76, 37.64],
+            zoom: 10
+        });
+    }
+</script>
     <div class="content">
         <h1 style="display: block; margin-left: auto; margin-right: auto;">Moscow</h1>
         <iframe style=" display: block; margin-left: auto; margin-right: auto;" width="560" height="315" src="https://www.youtube.com/embed/S_dfq9rFWAE?si=rQBsAn9A_F5TkOH8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
