@@ -1,6 +1,7 @@
-from fastapi import APIRouter, Request
+from fastapi import APIRouter, Request, Depends
 from fastapi.templating import Jinja2Templates
 
+from app.cities.router import get_cities
 
 router = APIRouter(
     prefix="/pages",
@@ -12,9 +13,12 @@ templates = Jinja2Templates(directory="app/templates")
 
 @router.get("/main")
 async def get_main_page(
-        request: Request
+        request: Request,
+        cities=Depends(get_cities)
 ):
-    return templates.TemplateResponse("mainPage.html", context={"request": request})
+    return templates.TemplateResponse(
+        "mainPage.html",
+        context={"request": request, "cities": cities})
 
 
 @router.get("/register")

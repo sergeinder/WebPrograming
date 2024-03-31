@@ -29,11 +29,9 @@
 
   <main>
     <div class="sidenav">
-      <a href="#City1">Moscow</a>
-      <a href="#City2">City 2</a>
-      <a href="#City3">City 3</a>
-      <a href="#City4">City 4</a>
-      <a href="#City5">City 5</a>
+      {% for city in cities %}
+      <a href=#{{city.name}}>{{city.name}}</a>
+      {% endfor %}
     </div>
     <div class="card">
       <img src="{{url_for('static',path='images/moscow.jpg')}}" width="400" height="300" alt="city">
@@ -41,6 +39,17 @@
         <a href="http://localhost:8000/pages/city1" style="color: white"><h4 id="City1">Moscow</h4></a>
         <p>description of the city <br/> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, consequatur illo. Aperiam, placeat. Minus suscipit iure natus officia repellat temporibus, reprehenderit quisquam repudiandae itaque aspernatur cupiditate vel quasi eaque ratione facilis expedita reiciendis, voluptatum ipsa hic voluptate? Mollitia placeat omnis numquam, beatae cum eligendi nihil hic tenetur natus repudiandae eos?</p>
       </div>
+    </div>
+    <div>
+      {% for city in cities %}
+      <div class="card">
+        <img src={{url_for('static',path='images/'+city.image_id|string+'.jpg')}} width="400" height="300" alt="city">
+        <div class="card__text">
+          <a href="http://localhost:8000/pages/{{city.name}}" style="color: white"><h4 id={{city.name}}>{{city.name}}</h4></a>
+          <p>{{city.description}} <br/> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, consequatur illo. Aperiam, placeat. Minus suscipit iure natus officia repellat temporibus, reprehenderit quisquam repudiandae itaque aspernatur cupiditate vel quasi eaque ratione facilis expedita reiciendis, voluptatum ipsa hic voluptate? Mollitia placeat omnis numquam, beatae cum eligendi nihil hic tenetur natus repudiandae eos?</p>
+        </div>
+      </div>
+      {% endfor %}
     </div>
     <div class="card">
       <img src="https://lorempic.com/640/480" width="400" height="300" alt="city">
