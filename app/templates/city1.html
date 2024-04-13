@@ -7,6 +7,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel ="stylesheet" href="{{ url_for('static', path='/css/header_block.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/citynam.css') }}">
     <script src="{{url_for('static',path='js/map.js')}}" type="text/javascript"></script>
     <style>
         html, body, #map {
@@ -18,7 +19,7 @@
 <body>
     <header>
     <div class="menu">
-      <a href="http://localhost:8000/pages/main" class="active">Home</a>
+      <a href="http://localhost:8000/pages/main">Home</a>
       <a>Hotels</a>
       <a>Events</a>
     </div>
@@ -28,10 +29,51 @@
     </div>
     </header>
     
-    <div class="content">
-        <h1 style="display: block; margin-left: auto; margin-right: auto;">Moscow</h1>
-        <iframe style=" display: block; margin-left: auto; margin-right: auto;" width="560" height="315" src="https://www.youtube.com/embed/S_dfq9rFWAE?si=rQBsAn9A_F5TkOH8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    </div>
+    <div class="card">
+        <img src="{{url_for('static',path='images/2.jpg')}}" width="400" height="300" alt="city">
+        <div class="card__text">
+            <div class="name">
+                <h4>Moscow</h4>
+                <svg width=24px viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="active" d="M5 6.2C5 5.07989 5 4.51984 5.21799 4.09202C5.40973 3.71569 5.71569 3.40973 6.09202 3.21799C6.51984 3 7.07989 3 8.2 3H15.8C16.9201 3 17.4802 3 17.908 3.21799C18.2843 3.40973 18.5903 3.71569 18.782 4.09202C19 4.51984 19 5.07989 19 6.2V21L12 16L5 21V6.2Z" stroke="#808080" stroke-width="2" stroke-linejoin="round" id="Flag"/>
+                </svg>
+            </div>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus enim tenetur tempora. Quis excepturi provident voluptas harum autem voluptates, expedita ex vel, assumenda maiores fugit consequuntur pariatur cupiditate explicabo? Natus?
+          Nemo sed voluptatum, laudantium assumenda unde, porro ab quos reiciendis consequatur ullam odio veniam molestiae amet facilis maiores adipisci, nulla nostrum consectetur numquam. Quo sapiente distinctio ut minima, dolorum veritatis!
+          Vitae ad voluptate sunt quasi porro! Similique dolor iure, nihil aut sed vitae omnis magni necessitatibus distinctio. Reiciendis velit deserunt deleniti ab. Ut reprehenderit aut corporis distinctio molestias. Ea, quia!
+          Quae minima dignissimos magni voluptates ea dicta qui laudantium enim necessitatibus itaque delectus consequuntur possimus provident officiis numquam accusantium fugiat ratione, praesentium voluptate facere vero quam sint. Beatae, eligendi doloribus.
+          Unde harum cum ullam numquam, quos laudantium. Asperiores voluptatum vitae, odit quae suscipit minus voluptatibus totam? Reiciendis nisi et dolorum reprehenderit molestias perspiciatis exercitationem numquam ducimus, amet iure consectetur cumque.
+          Neque magnam, dolores nostrum enim veniam voluptatum est iusto incidunt! Reiciendis, ad possimus cum labore molestias beatae tempore natus qui! Natus provident cupiditate quasi sequi sapiente blanditiis, quae est voluptatibus.
+          Distinctio, ab? Debitis repudiandae, cum totam ratione voluptate molestiae eaque earum adipisci distinctio, cumque ullam eum consequuntur nihil pariatur nulla! Architecto culpa nulla tenetur laudantium. Explicabo perspiciatis vero repellendus neque.
+          Fuga optio esse, voluptatem ipsum soluta consequatur voluptas mollitia, eligendi quam incidunt nihil dolore molestiae dignissimos! Repudiandae ea doloremque officia maiores ipsum in, perspiciatis similique reiciendis voluptate iure eveniet esse. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel laudantium et autem iure, sint fugiat. Veniam dignissimos quis distinctio aliquam illo, error quia saepe hic iusto, rem at aspernatur rerum.
+          Asperiores hic voluptatum est iusto quos impedit exercitationem ducimus vitae excepturi ut, laboriosam modi? Odio quidem sequi modi est maiores, ratione obcaecati voluptatem, quis eaque doloremque quisquam corrupti dicta qui.
+          Vitae quos quibusdam excepturi unde nisi dolores molestias, explicabo est quidem consequatur sit obcaecati repellendus quae non nostrum eum ad nihil ipsam tempore officia nobis. Aspernatur officiis optio mollitia similique!
+          Odit illo provident modi! Veniam, ipsa sunt laboriosam sequi natus excepturi nam dolore rerum consectetur est deleniti omnis quibusdam perferendis modi expedita voluptas, voluptate nulla repellendus mollitia sapiente corrupti error.</p>
+          <iframe style=" display: block; margin-left: auto; margin-right: auto;" width="560" height="315" src="https://www.youtube.com/embed/S_dfq9rFWAE?si=rQBsAn9A_F5TkOH8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="{{url_for('static',path='images/2.jpg')}}" width="400" height="300" alt="city">
+        <div class="card__text">
+            <div class="name">
+                <h4>id &nbsp;</h4>
+                <h4>dostopr</h4>
+            </div>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus enim tenetur tempora. Quis excepturi provident voluptas harum autem voluptates, expedita ex vel, assumenda maiores fugit consequuntur pariatur cupiditate explicabo? Natus?
+          Nemo sed voluptatum, laudantium assumenda unde, porro ab quos reiciendis consequatur ullam odio veniam molestiae amet facilis maiores adipisci, nulla nostrum consectetur numquam. Quo sapiente distinctio ut minima, dolorum veritatis!
+          Vitae ad voluptate sunt quasi porro! Similique dolor iure, nihil aut sed vitae omnis magni necessitatibus distinctio. Reiciendis velit deserunt deleniti ab. Ut reprehenderit aut corporis distinctio molestias. Ea, quia!
+          Quae minima dignissimos magni voluptates ea dicta qui laudantium enim necessitatibus itaque delectus consequuntur possimus provident officiis numquam accusantium fugiat ratione, praesentium voluptate facere vero quam sint. Beatae, eligendi doloribus.
+          Unde harum cum ullam numquam, quos laudantium. Asperiores voluptatum vitae, odit quae suscipit minus voluptatibus totam? Reiciendis nisi et dolorum reprehenderit molestias perspiciatis exercitationem numquam ducimus, amet iure consectetur cumque.
+          Neque magnam, dolores nostrum enim veniam voluptatum est iusto incidunt! Reiciendis, ad possimus cum labore molestias beatae tempore natus qui! Natus provident cupiditate quasi sequi sapiente blanditiis, quae est voluptatibus.
+          Distinctio, ab? Debitis repudiandae, cum totam ratione voluptate molestiae eaque earum adipisci distinctio, cumque ullam eum consequuntur nihil pariatur nulla! Architecto culpa nulla tenetur laudantium. Explicabo perspiciatis vero repellendus neque.
+          Fuga optio esse, voluptatem ipsum soluta consequatur voluptas mollitia, eligendi quam incidunt nihil dolore molestiae dignissimos! Repudiandae ea doloremque officia maiores ipsum in, perspiciatis similique reiciendis voluptate iure eveniet esse. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel laudantium et autem iure, sint fugiat. Veniam dignissimos quis distinctio aliquam illo, error quia saepe hic iusto, rem at aspernatur rerum.
+          Asperiores hic voluptatum est iusto quos impedit exercitationem ducimus vitae excepturi ut, laboriosam modi? Odio quidem sequi modi est maiores, ratione obcaecati voluptatem, quis eaque doloremque quisquam corrupti dicta qui.
+          Vitae quos quibusdam excepturi unde nisi dolores molestias, explicabo est quidem consequatur sit obcaecati repellendus quae non nostrum eum ad nihil ipsam tempore officia nobis. Aspernatur officiis optio mollitia similique!
+          Odit illo provident modi! Veniam, ipsa sunt laboriosam sequi natus excepturi nam dolore rerum consectetur est deleniti omnis quibusdam perferendis modi expedita voluptas, voluptate nulla repellendus mollitia sapiente corrupti error.</p>
+        </div>
+      </div>
+
     <div id="map"></div>
 </body>
 </html>
