@@ -1,12 +1,12 @@
 from app.src.database import asinc_session_maker
-from sqlalchemy import select
+from sqlalchemy import select, insert
 
 
 class BaseDAO:
     model = None
 
     @classmethod
-    async def finf_by_id(cls, model_id: int):
+    async def find_by_id(cls, model_id: int):
         async with asinc_session_maker() as session:
             query = select(cls.model).filter_by(id=model_id)
             result = await session.execute(query)
@@ -25,3 +25,10 @@ class BaseDAO:
             query = select(cls.model).filter_by(**filter_by)
             cities = await session.execute(query)
             return cities.scalars().all()
+
+    @classmethod
+    async def add(cls, **data):
+        async with asinc_session_maker() as session:
+            query = insert(cls.model).values(**data)
+            await session.execute(query)
+            await session.commit()

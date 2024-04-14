@@ -35,9 +35,13 @@ async def get_login_page(
     return templates.TemplateResponse("login.html", context={"request": request})
 
 
-@router.get("/city1")
-async def get_city1_page(
-        request: Request
+@router.get("/city/{city_name}")
+async def get_city_page(
+        city_name: str,
+        request: Request,
+        cities=Depends(get_cities)
 ):
-    return templates.TemplateResponse("city1.html", context={"request": request})
+    return templates.TemplateResponse(
+        "city.html",
+        context={"request": request, "cities": cities, "city_name": city_name})
 
