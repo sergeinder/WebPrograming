@@ -3,13 +3,14 @@ from pydantic import BaseModel
 # Validation
 
 
-class SCities(BaseModel):
+class SAttractions(BaseModel):
     id: int
+    city_id: int
     name: str
-    location: str
-    image_id: int
     description: str
-    video_url: str
+    location: str
+    address: str
+    image_id: int
 
     class Config:
         from_attributes = True

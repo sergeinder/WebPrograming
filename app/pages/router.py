@@ -3,6 +3,7 @@ from fastapi.templating import Jinja2Templates
 
 from app.cities.router import get_cities
 
+
 router = APIRouter(
     prefix="/pages",
     tags=["Frontend"]

@@ -2,5 +2,5 @@ INSERT INTO cities ("name", "location", description, video_url, image_id) VALUES
 ('Moscow', '55.755864, 37.617698', 'someDesc', 'some_url', 2);
 
 
-INSERT INTO users (username, "password") VALUES
-('CoolMan4434','Testpsw12345');
+INSERT INTO cities ("name", "location", image_id, big_photo_id, description) VALUES
+('Москва', '55.755864, 37.617698', 1, 2, 'Лучший город Земли');

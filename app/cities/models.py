@@ -10,5 +10,5 @@ class Cities(Base):
     name = Column(String, nullable=False)
     location = Column(String, nullable=False)
     image_id = Column(Integer)
+    big_photo_id = Column(Integer)
     description = Column(String, nullable=False)
-    video_url = Column(String)

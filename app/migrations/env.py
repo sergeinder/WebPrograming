@@ -11,6 +11,8 @@ from app.src.config import settings
 from app.src.database import Base
 from app.cities.models import Cities
 from app.users.models import Users
+from app.attractions.models import Attractions
+from app.favoutites.models import Favourites
 
 sys.path.insert(0, dirname(dirname(dirname(abspath(__file__)))))
 
