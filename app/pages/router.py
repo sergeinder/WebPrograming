@@ -36,7 +36,7 @@ async def get_login_page(
     return templates.TemplateResponse("login.html", context={"request": request})
 
 
-@router.get("/city/{city_name}")
+@router.get("/{city_name}")
 async def get_city_page(
         city_name: str,
         request: Request,
