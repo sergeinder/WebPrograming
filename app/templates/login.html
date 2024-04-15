@@ -123,7 +123,7 @@
         if (response.ok) {
         let data = await  response.json()
         console.log(data['id'])
-        const url1 = "/pages/" + data['id']
+        const url1 = "/favourite?user_id=" + data['id']
         window.location.replace(url1)
         }else{
           window.location.href = "/pages/login"

@@ -62,11 +62,9 @@
       )
       if (response.ok) {
       let data = await  response.json()
-      const url1 = "http://localhost:8000/auth/me";
-      let response = await  fetch(url1, {
-        method: 'GET',
-        credentials: 'include',}
-      )
+      console.log(data['id'])
+      const url1 = "/favourite?user_id=" + data['id']
+      window.location.replace(url1)
       }else{
         window.location.href = "/pages/login"
       }
