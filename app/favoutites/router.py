@@ -1,8 +1,7 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Request
 
 
 from app.favoutites.dao import FavouritesDAO
-from app.favoutites.scemas import SFavourites
 from app.users.models import Users
 from app.users.dependencies import get_current_user
 
@@ -25,6 +24,5 @@ async def add_favourite(
     await FavouritesDAO.add(user.id, city_id)
 
 
-@router.get("")
-async def get_favourite(user: Users = Depends(get_current_user)) -> list[SFavourites]:
-    return await FavouritesDAO.find_all(id=user.id)
+
+

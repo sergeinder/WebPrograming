@@ -3,6 +3,8 @@ from fastapi.templating import Jinja2Templates
 
 from app.attractions.router import get_attractions
 from app.cities.router import get_cities, get_cities_by_id
+from app.favoutites.router import get_favourites
+from app.users.dependencies import get_current_user
 
 router = APIRouter(
     prefix="/pages",
@@ -43,8 +45,17 @@ async def get_city_page(
         attractions=Depends(get_attractions),
         city=Depends(get_cities_by_id)
 ):
-    print(city)
     return templates.TemplateResponse(
         "city.html",
         context={"request": request, "attractions": attractions, "city": city})
 
+
+@router.get("/favourite")
+async def get_favourite(
+        request: Request,
+        favourites=Depends(get_favourites),
+):
+    print(favourites)
+    return templates.TemplateResponse(
+        "mainPage.html",
+        context={"request": request, "cities": cities})
