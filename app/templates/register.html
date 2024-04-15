@@ -13,8 +13,7 @@
   <header>
     <div class="menu">
       <a href="http://localhost:8000/pages/main">Home</a>
-      <a>Hotels</a>
-      <a>Events</a>
+      <a id="youfavorite">Favorite</a>
     </div>
     <div class="account">
       <a href="http://localhost:8000/pages/login">Login</a>
@@ -104,6 +103,20 @@ document.getElementById('wrapper').addEventListener('submit', function(event) {
     if(flag === true){
       wrapper.reset();
     }
+    console.log(`Email: ${email}, Password: ${password}`);
+      const url = "http://localhost:8000/auth/register";
+      fetch(url, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'}, 
+                body: JSON.stringify({email: email, hash_password: password}),
+            }).then(response => {
+                if (response.status === 200) {
+                    window.location.href = "/pages/main"
+                } else {
+                  emailError.textContent = "Неверный email или пароль";
+                }
+            });
+    
     });
 
     
@@ -119,3 +132,22 @@ document.getElementById('wrapper').addEventListener('submit', function(event) {
 </script>
 </body>
 </html>
+
+<script>
+  const buttonfp = document.getElementById('youfavorite');
+  buttonfp.addEventListener('click', async function(){
+      const url = "http://localhost:8000/auth/me";
+      let response = await  fetch(url, {
+        method: 'GET',
+        credentials: 'include',}
+      )
+      if (response.ok) {
+      let data = await  response.json()
+      console.log(data['id'])
+      const url1 = "/pages/" + data['id']
+      window.location.replace(url1)
+      }else{
+        window.location.href = "/pages/login"
+      }
+    } )
+</script>
