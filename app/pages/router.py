@@ -59,3 +59,4 @@ async def get_favourite(
     return templates.TemplateResponse(
         "mainPage.html",
         context={"request": request, "cities": cities})
+# kk
