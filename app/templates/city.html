@@ -29,29 +29,21 @@
     
     <div class="name">
       <div class="back"></div>
-      <h6>CityName</h6>
+      <h6>{{city.name}}</h6>
       <button type="button" id="favorite" class="active">Favorite</button>
     </div>
-    <img class="panorama" src="{{url_for('static', path='images/2.jpg')}}">
-
+    <img class="panorama" src="{{url_for('static',path='images/'+city.big_photo_id|string+'.jpg')}}">
+    {% for attraction in attractions %}
       <div class="card">
-        <img src="{{url_for('static',path='images/1.jpg')}}" alt="city">
+        <img src="{{url_for('static',path='images/'+attraction.image_id|string+'.jpg')}}" alt="attraction">
         <div class="card__text">
-          <h4>AttrationName</h4>
-          <h3 class="addres">Addres: addres</h3>
-          <p>description Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus enim tenetur tempora. Quis excepturi provident voluptas harum autem voluptates, expedita ex vel, assumenda maiores fugit consequuntur pariatur cupiditate explicabo? Natus?
-          Nemo sed voluptatum, laudantium assumenda unde, porro ab quos reiciendis consequatur ullam odio veniam molestiae amet facilis maiores adipisci, nulla nostrum consectetur numquam. Quo sapiente distinctio ut minima, dolorum veritatis!
-          Vitae ad voluptate sunt quasi porro! Similique dolor iure, nihil aut sed vitae omnis magni necessitatibus distinctio. Reiciendis velit deserunt deleniti ab. Ut reprehenderit aut corporis distinctio molestias. Ea, quia!
-          Quae minima dignissimos magni voluptates ea dicta qui laudantium enim necessitatibus itaque delectus consequuntur possimus provident officiis numquam accusantium fugiat ratione, praesentium voluptate facere vero quam sint. Beatae, eligendi doloribus.
-          Unde harum cum ullam numquam, quos laudantium. Asperiores voluptatum vitae, odit quae suscipit minus voluptatibus totam? Reiciendis nisi et dolorum reprehenderit molestias perspiciatis exercitationem numquam ducimus, amet iure consectetur cumque.
-          Neque magnam, dolores nostrum enim veniam voluptatum est iusto incidunt! Reiciendis, ad possimus cum labore molestias beatae tempore natus qui! Natus provident cupiditate quasi sequi sapiente blanditiis, quae est voluptatibus.
-          Distinctio, ab? Debitis repudiandae, cum totam ratione voluptate molestiae eaque earum adipisci distinctio, cumque ullam eum consequuntur nihil pariatur nulla! Architecto culpa nulla tenetur laudantium. Explicabo perspiciatis vero repellendus neque.
-          Fuga optio esse, voluptatem ipsum soluta consequatur voluptas mollitia, eligendi quam incidunt nihil dolore molestiae dignissimos! Repudiandae ea doloremque officia maiores ipsum in, perspiciatis similique reiciendis voluptate iure eveniet esse. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel laudantium et autem iure, sint fugiat. Veniam dignissimos quis distinctio aliquam illo, error quia saepe hic iusto, rem at aspernatur rerum.
-          Asperiores hic voluptatum est iusto quos impedit exercitationem ducimus vitae excepturi ut, laboriosam modi? Odio quidem sequi modi est maiores, ratione obcaecati voluptatem, quis eaque doloremque quisquam corrupti dicta qui.
-          Vitae quos quibusdam excepturi unde nisi dolores molestias, explicabo est quidem consequatur sit obcaecati repellendus quae non nostrum eum ad nihil ipsam tempore officia nobis. Aspernatur officiis optio mollitia similique!
-          Odit illo provident modi! Veniam, ipsa sunt laboriosam sequi natus excepturi nam dolore rerum consectetur est deleniti omnis quibusdam perferendis modi expedita voluptas, voluptate nulla repellendus mollitia sapiente corrupti error.</p>
+          <h4>{{attraction.name}}</h4>
+          <h3 class="addres">Addres: {{attraction.address}}</h3>
+          <p>{{attraction.description}}</p>
         </div>
       </div>
+    {% endfor %}
+
 
     <div id="map"></div>
 </body>

@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Request, Depends
 from fastapi.templating import Jinja2Templates
 
-from app.cities.router import get_cities
-
+from app.attractions.router import get_attractions
+from app.cities.router import get_cities, get_cities_by_id
 
 router = APIRouter(
     prefix="/pages",
@@ -36,13 +36,15 @@ async def get_login_page(
     return templates.TemplateResponse("login.html", context={"request": request})
 
 
-@router.get("/{city_name}")
+@router.get("/{city_id}")
 async def get_city_page(
-        city_name: str,
         request: Request,
-        cities=Depends(get_cities)
+        city_id: int,
+        attractions=Depends(get_attractions),
+        city=Depends(get_cities_by_id)
 ):
+    print(city)
     return templates.TemplateResponse(
         "city.html",
-        context={"request": request, "cities": cities, "city_name": city_name})
+        context={"request": request, "attractions": attractions, "city": city})
 
