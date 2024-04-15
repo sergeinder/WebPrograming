@@ -20,6 +20,7 @@ app.include_router(router_favourites)
 app.include_router(router_attractions)
 
 
+# Рудимент, забей
 @app.get('/get_first_user')
 def first_user():
     api_url = "https://jsonplaceholder.typicode.com/users"

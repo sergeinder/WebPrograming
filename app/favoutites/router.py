@@ -2,6 +2,7 @@ from fastapi import APIRouter, Depends
 
 
 from app.favoutites.dao import FavouritesDAO
+from app.favoutites.scemas import SFavourites
 from app.users.models import Users
 from app.users.dependencies import get_current_user
 
@@ -21,6 +22,9 @@ async def add_favourite(
         city_id: int,
         user: Users = Depends(get_current_user)
 ):
-    favourites = await FavouritesDAO.add(user.id, city_id)
-    if not favourites:
-        print("fun, mfk")
+    await FavouritesDAO.add(user.id, city_id)
+
+
+@router.get("")
+async def get_favourite(user: Users = Depends(get_current_user)) -> list[SFavourites]:
+    return await FavouritesDAO.find_all(id=user.id)
