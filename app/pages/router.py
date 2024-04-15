@@ -50,13 +50,12 @@ async def get_city_page(
         context={"request": request, "attractions": attractions, "city": city})
 
 
-@router.get("/favourite")
+@router.get("/favourite?user_id={user_id}")
 async def get_favourite(
         request: Request,
         user_id: int,
-        favourites=Depends(get_favourites),
+        cities=Depends(get_cities)
 ):
-    print(favourites)
     return templates.TemplateResponse(
         "mainPage.html",
         context={"request": request, "cities": cities})
