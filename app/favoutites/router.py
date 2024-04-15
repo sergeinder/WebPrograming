@@ -12,8 +12,8 @@ router = APIRouter(
 
 
 @router.get("")
-async def get_favourites(user: Users = Depends(get_current_user)):  # -> list[SFavourites]:
-    return await FavouritesDAO.find_all(user_id=user.id)
+async def get_favourites(user_id: int):
+    return await FavouritesDAO.find_all(user_id = user_id)
 
 
 @router.post("")

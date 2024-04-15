@@ -53,10 +53,10 @@ async def get_city_page(
 @router.get("/favourite")
 async def get_favourite(
         request: Request,
+        user_id: int,
         favourites=Depends(get_favourites),
 ):
     print(favourites)
     return templates.TemplateResponse(
         "mainPage.html",
         context={"request": request, "cities": cities})
-# kk
