@@ -8,7 +8,8 @@ class Cities(Base):
 
     id = Column(Integer, primary_key=True)
     name = Column(String, nullable=False)
-    location = Column(String, nullable=False)
+    longitude = Column(String, nullable=False)
+    latitude = Column(String, nullable=False)
     image_id = Column(Integer)
     big_photo_id = Column(Integer)
     description = Column(String, nullable=False)

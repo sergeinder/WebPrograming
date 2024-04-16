@@ -8,7 +8,8 @@ class SAttractions(BaseModel):
     city_id: int
     name: str
     description: str
-    location: str
+    longitude: str
+    latitude: str
     address: str
     image_id: int
 

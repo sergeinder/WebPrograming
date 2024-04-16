@@ -1,6 +1,8 @@
 from fastapi import APIRouter, Request, Depends
 from fastapi.templating import Jinja2Templates
 
+
+
 from app.attractions.router import get_attractions
 from app.cities.router import get_cities, get_cities_by_id
 from app.favoutites.router import get_favourites

@@ -45,7 +45,7 @@
     {% endfor %}
 
 
-    <!-- <div id="map"></div> -->
+    <div id="map"></div>
 </body>
 </html>
 <script>
@@ -83,11 +83,11 @@
 <script type="text/javascript">
   ymaps.ready(function () {
     var myMap = new ymaps.Map('map', {
-            center: [55.777826, 37.623712],
+            center: ['{{city.longitude}}', '{{city.latitude}}'],
             zoom: 12
         });
         '{% for attraction in attractions %}'
-        var Placemark = new ymaps.Placemark(['{{attraction.location}}'],{iconContent: '{{attraction.name}}'},{preset: 'twirl#blueStretchyIcon'});
+        var Placemark = new ymaps.Placemark(['{{attraction.longitude}}', '{{attraction.latitude}}'],{iconContent: '{{attraction.name}}'},{preset: 'twirl#blueStretchyIcon'});
         myMap.geoObjects.add(Placemark);
         '{% endfor %}'
         myMap.controls.add('zoomControl');

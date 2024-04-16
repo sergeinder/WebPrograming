@@ -6,7 +6,8 @@ from pydantic import BaseModel
 class SCities(BaseModel):
     id: int
     name: str
-    location: str
+    longitude: str
+    latitude: str
     image_id: int
     description: str
     video_url: str

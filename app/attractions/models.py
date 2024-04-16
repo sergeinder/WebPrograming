@@ -10,7 +10,8 @@ class Attractions(Base):
     city_id = Column(Integer, nullable=False)
     name = Column(String, nullable=False)
     description = Column(String, nullable=False)
-    location = Column(String, nullable=False)
+    longitude = Column(String, nullable=False)
+    latitude = Column(String, nullable=False)
     address = Column(String, nullable=False)
     image_id = Column(Integer, nullable=False)
 
