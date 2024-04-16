@@ -11,5 +11,5 @@ router = APIRouter(
 
 @router.get("")
 async def get_attractions(city_id: int) -> list[SAttractions]:
-    return await AttractionsDAO.find_all(id=city_id)
+    return await AttractionsDAO.find_all(city_id=city_id)
 

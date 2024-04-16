@@ -45,7 +45,7 @@
     {% endfor %}
 
 
-    <div id="map"></div>
+    <!-- <div id="map"></div> -->
 </body>
 </html>
 <script>
@@ -80,25 +80,16 @@
       }
     } )
 </script>
-
 <script type="text/javascript">
   ymaps.ready(function () {
     var myMap = new ymaps.Map('map', {
             center: [55.777826, 37.623712],
             zoom: 12
         });
-        var Placemark = new ymaps.Placemark([55.751594, 37.618051],{iconContent: 'Московский Кремль'},{preset: 'twirl#blueStretchyIcon'});
+        '{% for attraction in attractions %}'
+        var Placemark = new ymaps.Placemark(['{{attraction.location}}'],{iconContent: '{{attraction.name}}'},{preset: 'twirl#blueStretchyIcon'});
         myMap.geoObjects.add(Placemark);
-        var Placemark = new ymaps.Placemark([55.741449, 37.620882],{iconContent: 'Третьяковская галерея'},{preset: 'twirl#blueStretchyIcon'});
-        myMap.geoObjects.add(Placemark);
-        var Placemark = new ymaps.Placemark([55.759637, 37.618803],{iconContent: 'Большой театр'},{preset: 'twirl#blueStretchyIcon'});
-        myMap.geoObjects.add(Placemark);
-        var Placemark = new ymaps.Placemark([55.819708, 37.612590],{iconContent: 'Останкинская телебашня'},{preset: 'twirl#blueStretchyIcon'});
-        myMap.geoObjects.add(Placemark);
-        var Placemark = new ymaps.Placemark([55.827983, 37.634973],{iconContent: 'ВДНХ'},{preset: 'twirl#blueStretchyIcon'});
-        myMap.geoObjects.add(Placemark);
-        var Placemark = new ymaps.Placemark([55.749451, 37.542824],{iconContent: 'Москва-Сити'},{preset: 'twirl#blueStretchyIcon'});
-        myMap.geoObjects.add(Placemark);
+        '{% endfor %}'
         myMap.controls.add('zoomControl');
         myMap.controls.add('typeSelector');
     });

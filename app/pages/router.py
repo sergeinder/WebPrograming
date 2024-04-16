@@ -13,7 +13,6 @@ router = APIRouter(
 
 templates = Jinja2Templates(directory="app/templates")
 
-
 @router.get("/main")
 async def get_main_page(
         request: Request,
@@ -45,6 +44,7 @@ async def get_city_page(
         attractions=Depends(get_attractions),
         city=Depends(get_cities_by_id)
 ):
+    print(attractions)
     return templates.TemplateResponse(
         "city.html",
         context={"request": request, "attractions": attractions, "city": city})
@@ -54,9 +54,11 @@ async def get_city_page(
 async def get_favourite(
         request: Request,
         user_id: int,
-        cities=Depends(get_cities)
+        favoutites=Depends(get_favourites)
 ):
-    print(user_id)
+    cities = []
+    for i in range(len(favoutites)):
+        cities.append(await get_cities_by_id(favoutites[i].city_id))
     return templates.TemplateResponse(
         "mainPage.html",
         context={"request": request, "cities": cities})

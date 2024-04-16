@@ -8,6 +8,7 @@ from app.users.router import router as router_users
 from app.favoutites.router import router as router_favourites
 from app.attractions.router import router as router_attractions
 
+
 app = FastAPI()
 
 app.mount("/static", StaticFiles(directory="app/static"), "static")

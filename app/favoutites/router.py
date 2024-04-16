@@ -21,7 +21,15 @@ async def add_favourite(
         city_id: int,
         user: Users = Depends(get_current_user)
 ):
-    await FavouritesDAO.add(user.id, city_id)
+    favourites_of_user = await get_favourites(user.id)
+    flag = True
+    for favor in favourites_of_user:
+        if favor.city_id == city_id:
+            flag = False
+            break
+    if flag:
+        await FavouritesDAO.add(user.id, city_id)
+    
 
 
 
