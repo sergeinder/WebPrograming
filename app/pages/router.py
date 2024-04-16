@@ -44,7 +44,6 @@ async def get_city_page(
         attractions=Depends(get_attractions),
         city=Depends(get_cities_by_id)
 ):
-    print(attractions)
     return templates.TemplateResponse(
         "city.html",
         context={"request": request, "attractions": attractions, "city": city})
