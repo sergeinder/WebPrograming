@@ -31,16 +31,59 @@
       <button type="button" id="favorite" class="active">Favorite</button>
     </div>
     <img class="panorama" src="{{url_for('static',path='images/'+city.big_photo_id|string+'.jpg')}}">
-    {% for attraction in attractions %}
-      <div class="card">
-        <img src="{{url_for('static',path='images/'+attraction.image_id|string+'.jpg')}}" alt="attraction">
-        <div class="card__text">
-          <h4>{{attraction.name}}</h4>
-          <h3 class="addres">Addres: {{attraction.address}}</h3>
-          <p>{{attraction.description}}</p>
-        </div>
-      </div>
-    {% endfor %}
+
+    <div id="json-data"></div>
+
+    <script>
+      function fetchData_attractions() {
+      return fetch('http://localhost:8000/attractions?city_id={{city.id}}', {post: 'GET',})
+      .then((response) => response.json())
+      .then(data => {
+        createList_attractions(data);
+      })
+      .catch((e) => {
+      console.log(e)
+      })}
+
+      function createList_attractions(data) {
+        const preElement = document.getElementById('json-data');
+        ymaps.ready(function () {
+        var myMap = new ymaps.Map('map', {
+            center: ['{{city.longitude}}', '{{city.latitude}}'],
+            zoom: 12
+        });
+        for (let i = 0; i < data.length; i++) {
+        var Placemark = new ymaps.Placemark([data[i].longitude, data[i].latitude],{iconContent: data[i].name},{preset: 'twirl#blueStretchyIcon'});
+        myMap.geoObjects.add(Placemark);
+        }
+        myMap.controls.add('zoomControl');
+        myMap.controls.add('typeSelector');
+        });
+        for (let i = 0; i < data.length; i++) {
+          var card = document.createElement('div')
+          card.setAttribute('class', 'card');
+          preElement.appendChild(card);
+          var img = document.createElement('img')
+          var str  = "{{url_for('static',path='images/')}}"
+          img.setAttribute('src', str + data[i].image_id+ '.jpg');
+          card.appendChild(img);
+          var card__text = document.createElement('div')
+          card__text.setAttribute('class', 'card__text');
+          card.appendChild(card__text);
+          var h4 = document.createElement('h4')
+          h4.innerText = data[i].name;
+          card__text.appendChild(h4);
+          var addres = document.createElement('h3')
+          addres.setAttribute('class', 'addres');
+          addres.innerText = 'Addres: ' + data[i].address;
+          card__text.appendChild(addres);
+          var p = document.createElement('p')
+          p.innerText = data[i].description;
+          card__text.appendChild(p);
+      }
+    }
+      fetchData_attractions()
+    </script>
 
 
     <div id="map"></div>
@@ -59,19 +102,4 @@
         window.location.href = "/pages/login"
       }
     } )
-</script>
-
-<script type="text/javascript">
-  ymaps.ready(function () {
-    var myMap = new ymaps.Map('map', {
-            center: ['{{city.longitude}}', '{{city.latitude}}'],
-            zoom: 12
-        });
-        '{% for attraction in attractions %}'
-        var Placemark = new ymaps.Placemark(['{{attraction.longitude}}', '{{attraction.latitude}}'],{iconContent: '{{attraction.name}}'},{preset: 'twirl#blueStretchyIcon'});
-        myMap.geoObjects.add(Placemark);
-        '{% endfor %}'
-        myMap.controls.add('zoomControl');
-        myMap.controls.add('typeSelector');
-    });
 </script>
