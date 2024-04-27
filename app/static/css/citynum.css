@@ -26,6 +26,7 @@
 
 .name button:hover{
     background: #414141;
+    cursor: pointer;
 }
 
 .name button.active{
