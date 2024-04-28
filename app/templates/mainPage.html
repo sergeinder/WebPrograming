@@ -33,7 +33,7 @@
     <div>
       {% for city in cities %}
       <div class="card">
-        <img src={{url_for('static',path='images/'+city.image_id|string+'.jpg')}} width="400" height="300" alt="city">
+        <img src={{url_for('static',path='images/'+city.image_id|string+'.jpg')}} alt="city">
         <div class="card__text">
           <a href="http://localhost:8000/pages/{{city.id}}" style="color: white"><h4 id={{city.name}}>{{city.name}}</h4></a>
           <p>{{city.description}}</p>

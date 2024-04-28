@@ -26,7 +26,6 @@
   .wrapper form .row{
     height: 45px;
     margin-bottom: 36px;
-    position: relative;
   }
   .wrapper form .row input{
     box-sizing: border-box;
