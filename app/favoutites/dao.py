@@ -1,4 +1,4 @@
-from sqlalchemy import insert
+from sqlalchemy import insert, delete, and_
 
 from app.favoutites.models import Favourites
 from app.dao.base import BaseDAO
@@ -22,3 +22,17 @@ class FavouritesDAO(BaseDAO):
             new_favourites = await session.execute(add_favourite)
             await session.commit()
             return new_favourites.scalar()
+
+    @classmethod
+    async def delete(
+            cls,
+            user_id: int,
+            city_id: int
+    ):
+        async with asinc_session_maker() as session:
+            delete_favourite = delete(Favourites).where(and_(
+                Favourites.user_id == user_id,
+                Favourites.city_id == city_id)
+            )
+            await session.execute(delete_favourite)
+            await session.commit()
