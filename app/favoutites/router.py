@@ -45,3 +45,13 @@ async def delete_favourite(
             break
     if flag:
         await FavouritesDAO.delete(user.id, city_id)
+
+
+@router.get("_check_attraction")
+async def get_attractions(city_id: int, user: Users = Depends(get_current_user)) -> bool:
+    result = await FavouritesDAO.find_one_or_none(user_id=user.id, city_id=city_id)
+    if result is None:
+        return False
+    else:
+        return True
+

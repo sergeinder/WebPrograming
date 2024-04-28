@@ -1,7 +1,9 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
 
 from app.attractions.dao import AttractionsDAO
 from app.attractions.scemas import SAttractions
+from app.users.dependencies import get_current_user
+from app.users.models import Users
 
 router = APIRouter(
     prefix="/attractions",
