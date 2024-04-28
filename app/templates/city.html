@@ -15,7 +15,9 @@
     </style>
     <title>Moscow</title>
 </head>
+
 <body>
+
     <header>
     <div class="menu">
       <a href="http://localhost:8000/pages/main" id="home">Home</a>
@@ -35,12 +37,11 @@
         <div id="like">{{fav_count}}</div>
         </button>
     </div>
-    
-    <img class="panorama" src="{{url_for('static',path='images/'+city.big_photo_id|string+'.jpg')}}">
 
-    <script>
-      const buttonf = document.getElementById('favorite');
-      function fetchData_classattractions() {
+    <script> //favorit button
+    const buttonf = document.getElementById('favorite');
+
+    function fetchData_classattractions() {
       return fetch('http://localhost:8000/favourites_check_attraction?city_id={{city.id}}', {post: 'GET',credentials: 'include',})
       .then((response) => response.json())
       .then(data => {
@@ -51,15 +52,16 @@
         }
       })
       .catch((e) => {
-      console.log(e)
-        })}
-      fetchData_classattractions()
+        console.log(e)
+    })}
+    
+    fetchData_classattractions()
   
     const Like = document.getElementById('like');
     var ws = new WebSocket(`ws://localhost:8000/cities/ws/{{city.id}}`);
     
     buttonf.addEventListener('click', async function(){
-        if(buttonf.getAttribute('class') == 'active'){
+      if(buttonf.getAttribute('class') == 'active'){
         const url = "http://localhost:8000/favourites?city_id={{city.id}}";
         let response1 = await  fetch(url, {method: 'POST',
                   headers: {'Content-Type': 'application/json'}, 
@@ -84,16 +86,18 @@
           buttonf.setAttribute('class', 'active');
         }
       }
-      } )
+    })
       
-      ws.onmessage = function(event) {
+    ws.onmessage = function(event) {
       Like.innerText = event.data;
-      };
-  </script>
+    };
+    </script>
+    
+    <img class="panorama" src="{{url_for('static',path='images/'+city.big_photo_id|string+'.jpg')}}">
 
-    <div id="json-data"></div>
+    <div id="attractions-data"></div>
 
-    <script>
+    <script> //attractions data
       function fetchData_attractions() {
       return fetch('http://localhost:8000/attractions?city_id={{city.id}}', {post: 'GET',})
       .then((response) => response.json())
@@ -105,7 +109,7 @@
       })}
 
       function createList_attractions(data) {
-        const preElement = document.getElementById('json-data');
+        const preElement = document.getElementById('attractions-data');
         ymaps.ready(function () {
         var myMap = new ymaps.Map('map', {
             center: ['{{city.longitude}}', '{{city.latitude}}'],
@@ -141,9 +145,8 @@
           card__text.appendChild(p);
       }
     }
-      fetchData_attractions()
+    fetchData_attractions()
     </script>
-
 
     <div id="map"></div>
 </body>
