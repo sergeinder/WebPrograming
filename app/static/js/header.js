@@ -9,14 +9,8 @@
       var A1 = document.createElement('a');
       A1.setAttribute('id', 'youfavorite');
       A1.innerText = "Favorite";
+      A1.setAttribute('href', "http://localhost:8000/pages/favourite/fav");
       element.appendChild(A1);
-      const buttonfp = document.getElementById('youfavorite');
-      buttonfp.addEventListener('click', async function(){
-      let data = await  response.json()
-      console.log(data['id'])
-      const url1 = "/pages/favourite/" + data['id']
-      window.location.href = url1
-    } )
     var A2 = document.createElement('a');
     A2.setAttribute('id', 'logout');
     A2.innerText = "Logout";
