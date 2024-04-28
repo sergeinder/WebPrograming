@@ -13,8 +13,12 @@
 }
 
 .name button{
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-around;
     margin-right: 10px;
-    color: white;
+    color: #ffffff;
     border:none;
     background: grey;
     border-radius: 3px;

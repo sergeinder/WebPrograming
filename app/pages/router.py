@@ -46,9 +46,10 @@ async def get_city_page(
         city_id: int,
         city=Depends(get_cities_by_id)
 ):
+    fav_count = await get_cities_count(city_id)
     return templates.TemplateResponse(
         "city.html",
-        context={"request": request, "city": city})
+        context={"request": request, "city": city, "fav_count": fav_count})
 
 
 @router.get("/favourite/fav")
