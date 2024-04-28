@@ -1,10 +1,12 @@
-from fastapi import APIRouter, Request, Depends
+from fastapi import APIRouter, Request, Depends, WebSocket
 from fastapi.templating import Jinja2Templates
+from typing import List
 
 from app.attractions.router import get_attractions
 from app.cities.router import get_cities, get_cities_by_id
 from app.favoutites.router import get_favourites
 from app.users.dependencies import get_current_user_id
+from app.favoutites.router import get_cities_count
 
 router = APIRouter(
     prefix="/pages",
@@ -12,6 +14,25 @@ router = APIRouter(
 )
 
 templates = Jinja2Templates(directory="app/templates")
+
+
+class ConnectionManager:
+    def __init__(self):
+        self.active_connections: List[WebSocket] = []
+
+    async def connect(self, websocket: WebSocket):
+        await websocket.accept()
+        self.active_connections.append(websocket)
+
+    def disconnect(self, websocket: WebSocket):
+        self.active_connections.remove(websocket)
+
+    async def broadcast(self, message: str):
+        for connection in self.active_connections:
+            await connection.send_text(message)
+
+
+manager = ConnectionManager()
 
 
 @router.get("/main")
@@ -45,9 +66,10 @@ async def get_city_page(
         attractions=Depends(get_attractions),
         city=Depends(get_cities_by_id)
 ):
+    fav_count = get_cities_count(city_id),
     return templates.TemplateResponse(
         "city.html",
-        context={"request": request, "attractions": attractions, "city": city})
+        context={"request": request, "attractions": attractions, "city": city, "fav_count": fav_count})
 
 
 @router.get("/favourite/fav")

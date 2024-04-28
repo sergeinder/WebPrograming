@@ -23,8 +23,8 @@ class BaseDAO:
     async def find_all(cls, **filter_by):
         async with asinc_session_maker() as session:
             query = select(cls.model).filter_by(**filter_by)
-            cities = await session.execute(query)
-            return cities.scalars().all()
+            result = await session.execute(query)
+            return result.scalars().all()
 
     @classmethod
     async def add(cls, **data):
@@ -32,3 +32,10 @@ class BaseDAO:
             query = insert(cls.model).values(**data)
             await session.execute(query)
             await session.commit()
+
+    @classmethod
+    async def count(cls, **filter_by):
+        async with asinc_session_maker() as session:
+            query = select(cls.model).filter_by(**filter_by)
+            result = await session.execute(query)
+            return len(result.scalars().all())

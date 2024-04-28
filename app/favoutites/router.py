@@ -55,3 +55,7 @@ async def get_attractions(city_id: int, user: Users = Depends(get_current_user))
     else:
         return True
 
+
+@router.get("_count")
+async def get_cities_count(city_id: int) -> int:
+    return await FavouritesDAO.count(city_id=city_id)
