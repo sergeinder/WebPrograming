@@ -4,6 +4,7 @@ from fastapi import APIRouter, WebSocket, WebSocketDisconnect
 
 from app.cities.dao import CitiesDAO
 from app.cities.scemas import SCities
+from app.favoutites.router import get_cities_count
 
 router = APIRouter(
     prefix="/cities",
@@ -46,6 +47,7 @@ async def websocket_endpoint(websocket: WebSocket, city_id: int):
     try:
         while True:
             data = await websocket.receive_text()
-            await manager.broadcast(f"{city_id}")
+            truly_data = await get_cities_count(city_id)
+            await manager.broadcast(f"{truly_data}")
     except WebSocketDisconnect:
         manager.disconnect(websocket)

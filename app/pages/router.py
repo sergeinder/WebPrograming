@@ -15,6 +15,7 @@ router = APIRouter(
 
 templates = Jinja2Templates(directory="app/templates")
 
+
 @router.get("/main")
 async def get_main_page(
         request: Request,
