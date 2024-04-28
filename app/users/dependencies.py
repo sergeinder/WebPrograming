@@ -6,9 +6,11 @@ from app.src.config import settings
 from app.src.exeptions import TokenExpiredException, TokenAbsentException, IncorrectTokenFormatException, \
     UserIsNotPresentException
 from app.users.dao import UsersDAO
+from app.users.models import Users
 
 
 def get_token(request: Request):                # getting cookies
+    print("get_token")
     token = request.cookies.get("favourite_access_token")
     if not token:
         raise TokenAbsentException
@@ -17,6 +19,7 @@ def get_token(request: Request):                # getting cookies
 
 
 async def get_current_user(token: str = Depends(get_token)):
+    print("get_current_user")
     try:
         payload = jwt.decode(
             token, settings.SECRET_KEY, settings.ALGORITHM
@@ -34,3 +37,8 @@ async def get_current_user(token: str = Depends(get_token)):
         raise UserIsNotPresentException
 
     return user
+
+
+async def get_current_user_id(user: Users = Depends(get_current_user)):
+    print("User_id = ", user.id)
+    return int(user.id)

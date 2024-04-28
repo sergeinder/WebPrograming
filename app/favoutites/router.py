@@ -17,7 +17,7 @@ async def get_favourites(user_id: int):
     return await FavouritesDAO.find_all(user_id=user_id)
 
 
-@router.post("_add")
+@router.post("")
 async def add_favourite(
         city_id: int,
         user: Users = Depends(get_current_user)
