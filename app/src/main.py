@@ -11,8 +11,6 @@ from app.attractions.router import router as router_attractions
 app = FastAPI()
 
 app.mount("/static", StaticFiles(directory="app/static"), "static")
-
-
 app.include_router(router_users)
 app.include_router(router_pages)
 app.include_router(router_cities)

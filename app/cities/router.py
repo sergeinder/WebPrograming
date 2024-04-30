@@ -40,6 +40,18 @@ async def get_cities() -> list[SCities]:
 async def get_cities_by_id(city_id: int) -> SCities:
     return await CitiesDAO.find_by_id(city_id)
 
+@router.post("")
+async def add_city(
+    id : int,
+    name: str,
+    longitude: str,
+    latitude: str, 
+    image_id: int,
+    big_photo_id: int, 
+    description:str 
+):
+    return await CitiesDAO.add(id=id, name=name, longitude=longitude,latitude=latitude, image_id=image_id, big_photo_id=big_photo_id,description=description)
+
 
 @router.websocket("/ws/{city_id}")
 async def websocket_endpoint(websocket: WebSocket, city_id: int):

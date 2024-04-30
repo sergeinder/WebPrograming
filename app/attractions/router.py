@@ -15,3 +15,16 @@ router = APIRouter(
 async def get_attractions(city_id: int) -> list[SAttractions]:
     return await AttractionsDAO.find_all(city_id=city_id)
 
+@router.post("")
+async def add_attractions(
+    id : int,
+    city_id: int,
+    name: str,
+    description:str,
+    longitude: str,
+    latitude: str,
+    address:str, 
+    image_id: int, 
+):
+    return await AttractionsDAO.add(id=id, city_id=city_id, name=name, description=description, longitude=longitude, latitude=latitude, address=address, image_id=image_id)
+    
