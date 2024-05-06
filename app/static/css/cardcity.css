@@ -10,8 +10,10 @@
 
 .card img{
     border-radius: 15px;
-    width: 32%;
-    height: 24%;
+    min-width: 240px;
+    max-width: 28%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .card:hover {
@@ -28,14 +30,13 @@
 }
 
 .sidenav {
-    width: 130px;
+    width: 170px;
     position: fixed;
     z-index: 1;
     top: 63px;
-    left: 10px;
+    left: 15px;
     background: #eee;
     overflow-x: hidden;
-    padding: 8px 0;
 }
 
 .sidenav a {
@@ -51,7 +52,7 @@
 }
 
 main {
-    margin-left: 140px; /* Same width as the sidebar + left position in px */
+    margin-left: 185px; /* Same width as the sidebar + left position in px */
     font-size: 28px; /* Increased text to enable scrolling */
     padding: 0px 10px;
 }

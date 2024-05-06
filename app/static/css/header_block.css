@@ -5,10 +5,11 @@ body{
 header{
     position: sticky;
     align-items: center;
-    background-color: #333;
+    background-color: #333333;
     overflow: hidden;
     top: 0;
     width: 100%;
+    box-shadow: inset 0px -8px 8px -8px #0e0e0e;
 }
 header a {
     float: left;
