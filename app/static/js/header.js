@@ -1,5 +1,5 @@
 (async function () {
-    const url = "http://localhost:8000/auth/me";
+    const url = "http://185.193.137.147:9000/auth/me";
     response = await fetch(url, {
         method: 'GET',
         credentials: 'include',}
@@ -9,7 +9,7 @@
       var A1 = document.createElement('a');
       A1.setAttribute('id', 'youfavorite');
       A1.innerText = "Favorite";
-      A1.setAttribute('href', "http://localhost:8000/pages/favourite/fav");
+      A1.setAttribute('href', "http://185.193.137.147:9000/pages/favourite/fav");
       element.appendChild(A1);
     var A2 = document.createElement('a');
     A2.setAttribute('id', 'logout');
@@ -17,7 +17,7 @@
     element.appendChild(A2);
     const buttonlo = document.getElementById('logout');
     buttonlo.addEventListener('click', async function(){
-    const url = "http://localhost:8000/auth/logout";
+    const url = "http://185.193.137.147:9000/auth/logout";
     await  fetch(url, {
       method: 'POST',
       credentials: 'include',}
@@ -26,11 +26,11 @@
   } )
     }else{
         var A1 = document.createElement('a');
-        A1.setAttribute('href', "http://localhost:8000/pages/login");
+        A1.setAttribute('href', "http://185.193.137.147:9000/pages/login");
         A1.setAttribute('id', 'login');
         A1.innerText = "Login";
         var A2 = document.createElement('a');
-        A2.setAttribute('href', "http://localhost:8000/pages/register");
+        A2.setAttribute('href', "http://185.193.137.147:9000/pages/register");
         A1.setAttribute('id', 'register');
         A2.innerText = "Register";
         element.appendChild(A1);
